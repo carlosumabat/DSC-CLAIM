@@ -1,6 +1,110 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+class CommonRow extends StatelessWidget {
+  final String title;
+  final String text;
+
+  CommonRow({@required this.title, @required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+      child: IntrinsicHeight(
+        child: InkWell(
+          splashColor: Colors.white.withAlpha(30),
+          onTap: () {},
+          child: Row(
+            children: <Widget>[
+              Container(
+                height: 75,
+                width: 75,
+                child: Card(
+                  elevation: 0,
+                ),
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 6,
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        this.title,
+                        style: Theme.of(context).textTheme.headline6,
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        this.text,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CommonCard extends StatefulWidget {
+  final String title;
+  final Widget child;
+  final Color color;
+
+  CommonCard(
+      {Key key,
+      @required this.title,
+      @required this.child,
+      @required this.color})
+      : super(key: key);
+
+  @override
+  _CommonCardState createState() => _CommonCardState();
+}
+
+class _CommonCardState extends State<CommonCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Card(
+        elevation: 4,
+        color: widget.color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Container(
+          padding: EdgeInsets.fromLTRB(8, 8, 8, 15),
+          child: Column(
+            children: [
+              Text(
+                widget.title,
+                style: Theme.of(context).textTheme.headline5,
+                textAlign: TextAlign.center,
+              ),
+              const Divider(
+                endIndent: 0.0,
+                height: 20,
+                thickness: 5,
+              ),
+              widget.child,
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -146,110 +250,6 @@ class _ShopNowState extends State<ShopNow> {
               text: 'Item Name Here\nPrice Here',
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CommonRow extends StatelessWidget {
-  final String title;
-  final String text;
-
-  CommonRow({@required this.title, @required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
-      child: IntrinsicHeight(
-        child: InkWell(
-          splashColor: Colors.white.withAlpha(30),
-          onTap: () {},
-          child: Row(
-            children: <Widget>[
-              Container(
-                height: 75,
-                width: 75,
-                child: Card(
-                  elevation: 0,
-                ),
-              ),
-              SizedBox(width: 10),
-              Expanded(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        this.title,
-                        style: Theme.of(context).textTheme.headline6,
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        this.text,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class CommonCard extends StatefulWidget {
-  final String title;
-  final Widget child;
-  final Color color;
-
-  CommonCard(
-      {Key key,
-      @required this.title,
-      @required this.child,
-      @required this.color})
-      : super(key: key);
-
-  @override
-  _CommonCardState createState() => _CommonCardState();
-}
-
-class _CommonCardState extends State<CommonCard> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Card(
-        elevation: 4,
-        color: widget.color,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Container(
-          padding: EdgeInsets.fromLTRB(8, 8, 8, 15),
-          child: Column(
-            children: [
-              Text(
-                widget.title,
-                style: Theme.of(context).textTheme.headline5,
-                textAlign: TextAlign.center,
-              ),
-              const Divider(
-                endIndent: 0.0,
-                height: 20,
-                thickness: 5,
-              ),
-              widget.child,
-            ],
-          ),
         ),
       ),
     );
