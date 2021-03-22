@@ -70,10 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Home',
-          style: TextStyle(color: Colors.white),
-        ),
+        // title: Text(
+        //   'Home',
+        //   style: TextStyle(color: Colors.white),
+        //),
         backgroundColor: const Color(0xff3A044F),
       ),
       body: ListView(
@@ -163,40 +163,44 @@ class CommonRow extends StatelessWidget {
     return Container(
       padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
       child: IntrinsicHeight(
-        child: Row(
-          children: <Widget>[
-            Container(
-              height: 75,
-              width: 75,
-              child: Card(
-                elevation: 0,
+        child: InkWell(
+          splashColor: Colors.white.withAlpha(30),
+          onTap: () {},
+          child: Row(
+            children: <Widget>[
+              Container(
+                height: 75,
+                width: 75,
+                child: Card(
+                  elevation: 0,
+                ),
               ),
-            ),
-            SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 6,
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      this.title,
-                      style: Theme.of(context).textTheme.headline6,
-                      textAlign: TextAlign.left,
+              SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 6,
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      this.text,
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        this.title,
+                        style: Theme.of(context).textTheme.headline6,
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                  )
-                ],
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        this.text,
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
