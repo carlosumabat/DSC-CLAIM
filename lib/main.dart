@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:animations/animations.dart';
 
 class CommonRow extends StatelessWidget {
   final String title;
@@ -9,12 +10,12 @@ class CommonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(10, 0, 10, 5),
+    return InkWell(
+      splashColor: Colors.white.withAlpha(30),
+      onTap: () {},
       child: IntrinsicHeight(
-        child: InkWell(
-          splashColor: Colors.white.withAlpha(30),
-          onTap: () {},
+        child: Container(
+          padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
           child: Row(
             children: <Widget>[
               Container(
@@ -155,12 +156,20 @@ class MyApp extends StatelessWidget {
           displayColor: _textColor,
         ),
       ),
-      home: Scaffold(
-        body: Center(
-          child: HomeScreen(),
-        ),
-      ),
+      home: SelectorScreen(),
     );
+  }
+}
+
+class SelectorScreen extends StatefulWidget {
+  @override
+  _SelectorScreenState createState() => _SelectorScreenState();
+}
+
+class _SelectorScreenState extends State<SelectorScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
   }
 }
 
@@ -234,17 +243,14 @@ class _ShopNowState extends State<ShopNow> {
               title: 'LAZADA',
               text: 'Item Name Here\nPrice Here',
             ),
-            SizedBox(height: 10),
             CommonRow(
               title: 'SHOPEE',
               text: 'Item Name Here\nPrice Here',
             ),
-            SizedBox(height: 10),
             CommonRow(
               title: 'ZALORA',
               text: 'Item Name Here\nPrice Here',
             ),
-            SizedBox(height: 10),
             CommonRow(
               title: 'GRABFOOD',
               text: 'Item Name Here\nPrice Here',
