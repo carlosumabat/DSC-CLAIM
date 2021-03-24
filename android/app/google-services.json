@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "567395861598",
+    "project_id": "dsc-claim",
+    "storage_bucket": "dsc-claim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567395861598:android:a37bc48e2c0d74e11860cf",
+        "android_client_info": {
+          "package_name": "com.example.dsc_claim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567395861598-n48ivj2ocukvqjdrlilrsj52u0ans8f3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGwPituNwaZyH6wASOV4GkdkUt0YYiuso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567395861598-n48ivj2ocukvqjdrlilrsj52u0ans8f3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

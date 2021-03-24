@@ -11,7 +11,7 @@ class CommonRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      splashColor: Colors.white.withAlpha(30),
+      splashColor: const Color(0x1eb39b30),
       onTap: () {},
       child: IntrinsicHeight(
         child: Container(
@@ -104,7 +104,7 @@ class CommonGridViewCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      splashColor: Colors.white.withAlpha(30),
+      splashColor: const Color(0x1eb39b30),
       onTap: () {},
       child: Container(
         padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
@@ -162,7 +162,9 @@ class TextList extends StatelessWidget {
   }
 }
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   static const _primaryColor = const Color(0xfff6c143);
@@ -242,6 +244,7 @@ class _SelectorScreenState extends State<SelectorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           'CLAIM',
           style: TextStyle(color: Colors.white),
@@ -409,6 +412,9 @@ class GoogleMap extends StatelessWidget {
       colorNumber: 0,
       child: Container(
         height: 40,
+        child: Center(
+          child: Text('Coming soon...'),
+        ),
       ),
     );
   }
@@ -456,8 +462,11 @@ class QRScan extends StatelessWidget {
     return CommonCard(
       title: 'SCAN',
       colorNumber: 1,
-      child: Container(
-        height: 40,
+      child: Center(
+        child: Image.asset(
+          'assets/images/qr_code.png',
+          scale: 1,
+        ),
       ),
     );
   }
@@ -678,7 +687,7 @@ class ComingSoon extends StatelessWidget {
       title: 'COMING SOON...',
       colorNumber: 0,
       child: InkWell(
-        splashColor: Colors.white.withAlpha(30),
+        splashColor: const Color(0x1eb39b30),
         onTap: () {},
         child: Padding(
           padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
@@ -696,7 +705,11 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('f'),
+          title: Text(
+            'Profile',
+            style: TextStyle(color: Colors.white),
+          ),
+          iconTheme: IconThemeData(color: Colors.white),
         ),
         body: ListView(
           padding: EdgeInsets.all(30),
