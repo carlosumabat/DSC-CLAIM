@@ -58,17 +58,19 @@ class CommonRow extends StatelessWidget {
 class CommonCard extends StatelessWidget {
   final String title;
   final Widget child;
-  final Color color;
+  final int colorNumber;
 
   CommonCard(
-      {@required this.title, @required this.child, @required this.color});
+      {@required this.title, @required this.child, @required this.colorNumber});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Card(
         elevation: 4,
-        color: this.color,
+        color: (this.colorNumber == 0)
+            ? const Color(0xfffce6a4)
+            : const Color(0xffefdaa9),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -163,10 +165,10 @@ class TextList extends StatelessWidget {
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static const _primaryColor = const Color(0xffFEB437);
+  static const _primaryColor = const Color(0xfff6c143);
   static const _accentColor = const Color(0xffFF7200);
   static const _scaffoldBackgroundColor = const Color(0xffFFFFFF);
-  static const _textColor = const Color(0xff3A044F);
+  static const _textColor = const Color(0xff2b3844);
 
   @override
   Widget build(BuildContext context) {
@@ -244,7 +246,6 @@ class _SelectorScreenState extends State<SelectorScreen> {
           'CLAIM',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: const Color(0xff3A044F),
         actions: [
           IconButton(
             icon: Icon(Icons.account_circle),
@@ -270,9 +271,9 @@ class _SelectorScreenState extends State<SelectorScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xff3A044F),
-        selectedItemColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.white,
+        backgroundColor: const Color(0xffb7b091),
+        selectedItemColor: const Color(0xffffffff),
+        unselectedItemColor: const Color(0xff2b3844),
         showUnselectedLabels: false,
         currentIndex: _currentIndex,
         onTap: (int index) {
@@ -330,7 +331,7 @@ class RedeemablePoints extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonCard(
-      color: Theme.of(context).primaryColor,
+      colorNumber: 0,
       title: 'REDEEMABLE POINTS',
       child: Text(
         '129.00',
@@ -348,7 +349,7 @@ class ShopNow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonCard(
-      color: Theme.of(context).accentColor,
+      colorNumber: 1,
       title: 'HOT DEALS',
       child: Container(
         child: ListView(
@@ -405,7 +406,7 @@ class GoogleMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'MAP',
-      color: Theme.of(context).primaryColor,
+      colorNumber: 0,
       child: Container(
         height: 40,
       ),
@@ -418,7 +419,7 @@ class WasteTrack extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'TRACK',
-      color: Theme.of(context).accentColor,
+      colorNumber: 1,
       child: TextList(
         title: 'SATURDAY, MARCH 13, 2021',
         children: [
@@ -436,7 +437,7 @@ class WasteHistory extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'HISTORY',
-      color: Theme.of(context).primaryColor,
+      colorNumber: 0,
       child: TextList(
         title: 'PAST COLLECTIONS',
         children: [
@@ -454,7 +455,7 @@ class QRScan extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'SCAN',
-      color: Theme.of(context).accentColor,
+      colorNumber: 1,
       child: Container(
         height: 40,
       ),
@@ -487,7 +488,7 @@ class ClaimedWastes extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'CLAIMED WASTES',
-      color: Theme.of(context).primaryColor,
+      colorNumber: 0,
       child: Column(
         children: [
           Row(
@@ -548,7 +549,7 @@ class Turnovers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonCard(
-      color: Theme.of(context).accentColor,
+      colorNumber: 1,
       title: 'TURNOVERS',
       child: ListView(
         shrinkWrap: true,
@@ -567,7 +568,7 @@ class ProductFeature extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'Product Feature',
-      color: Theme.of(context).primaryColor,
+      colorNumber: 0,
       child: CommonRow(
         title: 'ECOBRICK PH',
         text:
@@ -601,7 +602,7 @@ class ShopWithUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'SHOP WITH US',
-      color: Theme.of(context).accentColor,
+      colorNumber: 1,
       child: GridView.count(
         shrinkWrap: true,
         crossAxisCount: 3,
@@ -646,7 +647,7 @@ class ReferFriend extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'REFER TO A FRIEND',
-      color: Theme.of(context).primaryColor,
+      colorNumber: 0,
       child: CommonRow(
         title: 'EARN 2 POINTS',
         text: 'Refer a friend using your QR code or the link unique to you.',
@@ -660,7 +661,7 @@ class WatchAd extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'REFER TO A FRIEND',
-      color: Theme.of(context).primaryColor,
+      colorNumber: 1,
       child: CommonRow(
         title: 'EARN 1 POINT',
         text:
@@ -675,9 +676,10 @@ class ComingSoon extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'COMING SOON...',
-      color: Theme.of(context).accentColor,
+      colorNumber: 0,
       child: InkWell(
         splashColor: Colors.white.withAlpha(30),
+        onTap: () {},
         child: Padding(
           padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
           child: Text(
@@ -712,7 +714,7 @@ class YourAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'YOUR ACCOUNT',
-      color: Theme.of(context).primaryColor,
+      colorNumber: 0,
       child: CommonRow(
         title: 'ACCOUNT DETAILS',
         text: 'Juan Dela Cruz\n09771843927\njuanitodc@email.com',
@@ -726,7 +728,7 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
       title: 'CONTACT US',
-      color: Theme.of(context).accentColor,
+      colorNumber: 1,
       child: Padding(
         padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
         child: Text(
