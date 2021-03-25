@@ -5,8 +5,9 @@ import 'package:animations/animations.dart';
 class CommonRow extends StatelessWidget {
   final String title;
   final String text;
+  final Image image;
 
-  CommonRow({@required this.title, @required this.text});
+  CommonRow({@required this.title, @required this.text, @required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +22,7 @@ class CommonRow extends StatelessWidget {
               Container(
                 height: 75,
                 width: 75,
-                child: Card(
-                  elevation: 0,
-                ),
+                child: this.image,
               ),
               SizedBox(width: 10),
               Expanded(
@@ -99,7 +98,8 @@ class CommonCard extends StatelessWidget {
 
 class CommonGridViewCell extends StatelessWidget {
   final String title;
-  CommonGridViewCell({@required this.title});
+  final Image image;
+  CommonGridViewCell({@required this.title, @required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -107,19 +107,18 @@ class CommonGridViewCell extends StatelessWidget {
       splashColor: const Color(0x1eb39b30),
       onTap: () {},
       child: Container(
-        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        padding: EdgeInsets.only(top: 5),
         child: Column(
           children: <Widget>[
             Container(
               height: 75,
               width: 75,
-              child: Card(
-                elevation: 0,
-              ),
+              child: this.image,
             ),
             SizedBox(width: 10),
             Text(
               this.title,
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),
@@ -175,12 +174,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'CLAIM',
       theme: ThemeData(
         primaryColor: _primaryColor,
         accentColor: _accentColor,
         scaffoldBackgroundColor: _scaffoldBackgroundColor,
-        fontFamily: 'Roboto',
+        fontFamily: 'Nunito',
         textTheme: TextTheme(
           headline1: TextStyle(
             fontSize: 96.0,
@@ -194,6 +194,7 @@ class MyApp extends StatelessWidget {
           headline5: TextStyle(
             fontSize: 24.0,
             fontWeight: FontWeight.bold,
+            fontFamily: 'Montserrat',
           ),
           headline6: TextStyle(
             fontSize: 20.0,
@@ -247,12 +248,17 @@ class _SelectorScreenState extends State<SelectorScreen> {
         centerTitle: true,
         title: Text(
           'CLAIM',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'Montserrat',
+            fontSize: 34,
+          ),
         ),
         actions: [
           IconButton(
             icon: Icon(Icons.account_circle),
             color: Colors.white,
+            iconSize: 34,
             onPressed: _pushProfile,
           ),
         ],
@@ -339,6 +345,7 @@ class RedeemablePoints extends StatelessWidget {
       child: Text(
         '129.00',
         style: TextStyle(
+          fontFamily: 'Montserrat',
           fontSize: 48,
           fontWeight: FontWeight.bold,
           letterSpacing: -0.25,
@@ -362,18 +369,22 @@ class ShopNow extends StatelessWidget {
             CommonRow(
               title: 'LAZADA',
               text: 'Item Name Here\nPrice Here',
+              image: Image.asset('assets/images/lazada-logo.png'),
             ),
             CommonRow(
               title: 'SHOPEE',
               text: 'Item Name Here\nPrice Here',
+              image: Image.asset('assets/images/shopee-logo.png'),
             ),
             CommonRow(
               title: 'ZALORA',
               text: 'Item Name Here\nPrice Here',
+              image: Image.asset('assets/images/zalora-logo.png'),
             ),
             CommonRow(
               title: 'GRABFOOD',
               text: 'Item Name Here\nPrice Here',
+              image: Image.asset('assets/images/grabfood-logo.png'),
             ),
           ],
         ),
@@ -508,12 +519,14 @@ class ClaimedWastes extends StatelessWidget {
                   child: Text(
                     '372273',
                     style: TextStyle(
+                      fontFamily: 'Montserrat',
                       fontSize: 34,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
+              SizedBox(width: 10),
               Expanded(
                 child: Align(
                   alignment: Alignment.topLeft,
@@ -532,12 +545,14 @@ class ClaimedWastes extends StatelessWidget {
                   child: Text(
                     '2879',
                     style: TextStyle(
+                      fontFamily: 'Montserrat',
                       fontSize: 34,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
+              SizedBox(width: 10),
               Expanded(
                 child: Align(
                   alignment: Alignment.topLeft,
@@ -564,8 +579,16 @@ class Turnovers extends StatelessWidget {
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          CommonRow(title: 'WINDER', text: '6150 KGS\nas of March 6, 2021'),
-          CommonRow(title: 'ECOBRICK', text: '8500 KGS\nas of March 1, 2021'),
+          CommonRow(
+            title: 'WINDER',
+            text: '6150 KGS\nas of March 6, 2021',
+            image: Image.asset('assets/images/winder-logo.png'),
+          ),
+          CommonRow(
+            title: 'ECOBRICK',
+            text: '8500 KGS\nas of March 1, 2021',
+            image: Image.asset('assets/images/ecobrick-logo.png'),
+          ),
         ],
       ),
     );
@@ -582,6 +605,7 @@ class ProductFeature extends StatelessWidget {
         title: 'ECOBRICK PH',
         text:
             'ECOBRICK PH manufactures bricks made from used plastic bottles, wrappers...',
+        image: Image.asset('assets/images/ecobrick-logo.png'),
       ),
     );
   }
@@ -613,18 +637,60 @@ class ShopWithUs extends StatelessWidget {
       title: 'SHOP WITH US',
       colorNumber: 1,
       child: GridView.count(
+        physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         crossAxisCount: 3,
         children: [
-          CommonGridViewCell(title: 'SHOPEE'),
-          CommonGridViewCell(title: 'ZALORA'),
-          CommonGridViewCell(title: 'LAZADA'),
-          CommonGridViewCell(title: 'GRAB'),
-          CommonGridViewCell(title: 'FOODPANDA'),
-          CommonGridViewCell(title: 'SHEIN'),
-          CommonGridViewCell(title: 'WATSONS'),
-          CommonGridViewCell(title: 'NIKE'),
-          CommonGridViewCell(title: 'ADIDAS'),
+          CommonGridViewCell(
+            title: 'SHOPEE',
+            image: Image.asset('assets/images/shopee-logo.png'),
+          ),
+          CommonGridViewCell(
+            title: 'ZALORA',
+            image: Image.asset(
+              'assets/images/zalora-logo.png',
+            ),
+          ),
+          CommonGridViewCell(
+            title: 'LAZADA',
+            image: Image.asset(
+              'assets/images/lazada-logo.png',
+            ),
+          ),
+          CommonGridViewCell(
+            title: 'GRAB',
+            image: Image.asset(
+              'assets/images/grab-logo.png',
+            ),
+          ),
+          CommonGridViewCell(
+            title: 'FOODPANDA',
+            image: Image.asset(
+              'assets/images/foodpanda-logo.png',
+            ),
+          ),
+          CommonGridViewCell(
+            title: 'SHEIN',
+            image: Image.asset(
+              'assets/images/shein-logo.png',
+            ),
+          ),
+          CommonGridViewCell(
+            title: 'WATSONS',
+            image: Image.asset(
+              'assets/images/watsons-logo.png',
+            ),
+          ),
+          CommonGridViewCell(
+            title: 'NIKE',
+            image: Image.asset(
+              'assets/images/nike-logo.png',
+            ),
+          ),
+          CommonGridViewCell(
+            title: 'ADIDAS',
+            image: Image.asset('assets/images/adidas-logo.png'),
+          ),
         ],
       ),
     );
@@ -660,6 +726,7 @@ class ReferFriend extends StatelessWidget {
       child: CommonRow(
         title: 'EARN 2 POINTS',
         text: 'Refer a friend using your QR code or the link unique to you.',
+        image: Image.asset('assets/images/qr-code-mini.png'),
       ),
     );
   }
@@ -675,6 +742,7 @@ class WatchAd extends StatelessWidget {
         title: 'EARN 1 POINT',
         text:
             'Tap on the play button to watch an ad prepared by one of our sponsors!',
+        image: Image.asset('assets/images/play-button.png'),
       ),
     );
   }
@@ -707,7 +775,7 @@ class ProfileScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             'Profile',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           iconTheme: IconThemeData(color: Colors.white),
         ),
@@ -731,6 +799,7 @@ class YourAccount extends StatelessWidget {
       child: CommonRow(
         title: 'ACCOUNT DETAILS',
         text: 'Juan Dela Cruz\n09771843927\njuanitodc@email.com',
+        image: Image.asset('assets/images/profile-pic.png'),
       ),
     );
   }
